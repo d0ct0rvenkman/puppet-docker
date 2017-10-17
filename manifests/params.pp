@@ -13,6 +13,7 @@ class docker::params {
   $bind_to = 'unix:///var/run/docker.sock'
   $log_level = 'info'
   $tmp_dir = '/var/tmp'
+  $log_rotate = false
   $dns = undef
   $dns_search = undef
   $add_registry = undef
