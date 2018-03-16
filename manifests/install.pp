@@ -5,13 +5,5 @@
 # and Archlinux based distributions.
 #
 class docker::install {
-
-  if $docker::package_manage {
-
-    package { $docker::package_name:
-      ensure => $docker::ensure,
-    }
-
-  }
-
+  package { 'docker': ensure => $docker::ensure, }
 }
