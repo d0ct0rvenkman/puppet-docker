@@ -147,7 +147,7 @@ class docker(
   $bind_to                     = $docker::params::bind_to,
   $log_level                   = $docker::params::log_level,
   $tmp_dir                     = $docker::params::tmp_dir,
-  $log_rotate		               = $docker::params::log_rotate,
+  $log_rotate                  = $docker::params::log_rotate,
   $dns                         = $docker::params::dns,
   $dns_search                  = $docker::params::dns_search,
   $add_registry                = $docker::params::add_registry,
