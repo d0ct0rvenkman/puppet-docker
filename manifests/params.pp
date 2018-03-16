@@ -4,6 +4,7 @@
 #
 class docker::params {
   $ensure = 'present'
+  $package_manage = true
   $service_state = running
   $service_enable = true
   $service_state_storage = 'stopped'
@@ -36,4 +37,22 @@ class docker::params {
   $iptables = undef
   $ip_masq = undef
   $network_extra_parameters = undef
+
+  #set package to docker-io for centos6 specifically
+  case $::osfamily {
+    'RedHat': {
+      case $::operatingsystemmajrelease {
+        6: {
+          $package_name = 'docker-io'
+        }
+        7: {
+          $package_name = 'docker'
+        }
+      }
+    }
+    default: {
+      $package_name = 'docker'
+    }
+  }
+
 }

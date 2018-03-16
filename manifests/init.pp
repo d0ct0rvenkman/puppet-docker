@@ -8,6 +8,13 @@
 #   Passed to the docker package.
 #   Defaults to present
 #
+# [*package_manage*]
+#   Whether to manage the docker package
+#   Defaults to true
+#
+# [*package_name*]
+#   Docker Package name
+#
 # [*service_state*]
 #   Whether you want to docker daemon to start up
 #   Defaults to running
@@ -130,6 +137,8 @@
 #
 class docker(
   $ensure                      = $docker::params::ensure,
+  $package_manage              = $docker::params::package_manage,
+  $package_name                = $docker::params::package_name,
   $service_state               = $docker::params::service_state,
   $service_enable              = $docker::params::service_enable,
   $service_state_storage       = $docker::params::service_state_storage,
@@ -138,7 +147,7 @@ class docker(
   $bind_to                     = $docker::params::bind_to,
   $log_level                   = $docker::params::log_level,
   $tmp_dir                     = $docker::params::tmp_dir,
-  $log_rotate		       = $docker::params::log_rotate,
+  $log_rotate		               = $docker::params::log_rotate,
   $dns                         = $docker::params::dns,
   $dns_search                  = $docker::params::dns_search,
   $add_registry                = $docker::params::add_registry,
