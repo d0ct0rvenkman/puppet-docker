@@ -63,6 +63,10 @@
 #   Defaults to false
 #   Type: Bool
 #
+# [*log_rotate*]
+#   Set to true to enable docker log rotation. Default is set to false
+#   Type: Bool
+#
 # [*extra_parameters*]
 #   Any extra parameters that should be passed to the docker daemon.
 #   Defaults to undefined
@@ -134,6 +138,7 @@ class docker(
   $bind_to                     = $docker::params::bind_to,
   $log_level                   = $docker::params::log_level,
   $tmp_dir                     = $docker::params::tmp_dir,
+  $log_rotate		       = $docker::params::log_rotate,
   $dns                         = $docker::params::dns,
   $dns_search                  = $docker::params::dns_search,
   $add_registry                = $docker::params::add_registry,
@@ -161,6 +166,10 @@ class docker(
 
   if $insecure_registry {
     validate_bool($insecure_registry)
+  }
+
+  if $log_rotate {
+    validate_bool($log_rotate)
   }
 
   if $add_registry {
